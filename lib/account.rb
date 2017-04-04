@@ -5,11 +5,11 @@ class Account
   STANDARD_VALIDITY_YRS = 5
   OPEN_BALANCE = 0
 
-  def initialize(attrs = {})
+  def initialize(balance, attrs = {})
     @pin_code = set_pin_code
     @exp_date = set_exp_date
     @account_status = :active
-    @balance = OPEN_BALANCE
+    @balance = balance
     set_owner(attrs[:owner])
   end
 
