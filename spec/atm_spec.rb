@@ -6,6 +6,7 @@ describe Atm do
   before do
     # Before each test we need to add an attribute of 'balance'
     # to the 'account' object and set the value to '100'
+    #Creating fake methods for the fake class:
     allow(account).to receive(:balance).and_return(100)
     allow(account).to receive(:balance=)
   end
