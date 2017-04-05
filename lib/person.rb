@@ -16,7 +16,10 @@ class Person
     @account = Account.new({ owner: self })
   end
 
-  
+  def deposit(amount)
+    #binding.pry
+    self.account == nil ? missing_account : self.account.deposit(amount)
+  end
 
 
 
@@ -31,6 +34,9 @@ class Person
     raise "A name is required"
   end
 
+  def missing_account
+    raise "No account present"
+  end
 
 
 end
