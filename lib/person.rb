@@ -1,4 +1,5 @@
 require './lib/Account.rb'
+require './lib/atm.rb'
 require 'pry-byebug'
 
 class Person
@@ -8,7 +9,7 @@ class Person
   def initialize(attrs = {})
     set_name(attrs[:name])
     @cash = 0
-
+    @account = nil
   end
 
 
@@ -16,9 +17,30 @@ class Person
     @account = Account.new({ owner: self })
   end
 
+  #def deposit(amount)
+  #  #binding.pry
+  #  self.account == nil ? missing_account(amount) : self.account.deposit(amount)
+  #end
+
   def deposit(amount)
-    #binding.pry
-    self.account == nil ? missing_account : self.account.deposit(amount)
+    if self.account == nil
+      missing_account
+    else
+      self.account.deposit(amount)
+      @cash -= amount
+    end
+  end
+
+
+  def withdraw(attrs = {})
+    if self.account == nil
+      missing_account
+    else
+      #binding.pry
+      check_withdraw_attrs(attrs)
+      reply = attrs[:atm].withdraw(attrs[:amount], attrs[:pin], attrs[:account])
+      reply[:status] == 'false' ? reply : @cash += attrs[:amount]
+    end
   end
 
 
@@ -27,7 +49,6 @@ class Person
 
   def set_name(obj)
     obj == nil ? missing_name : @name = obj
-
   end
 
   def missing_name
@@ -38,5 +59,10 @@ class Person
     raise "No account present"
   end
 
+  def check_withdraw_attrs(attrs)
+    if attrs[:atm] == nil
+      raise 'An ATM is required'
+    end
+  end
 
 end
