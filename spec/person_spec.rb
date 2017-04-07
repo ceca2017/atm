@@ -62,9 +62,14 @@ describe Person do
     end
 
     it 'can withdraw funds' do
-      command = lambda { subject.withdraw(amount: 100, pin: subject.account.pin_code, account: subject.account, atm: atm) }
-      expect(command.call).to be_truthy
+      subject.cash = 100
+      subject.deposit(100)
+
+      command = lambda { subject.withdraw(amount: 25, pin: subject.account.pin_code, account: subject.account, atm: atm) }
+      # expect(command.call).to be_truthy
       # be_truthy means that it is NOT false or nil
+      command.call
+      expect(subject.cash).to eq 25
     end
 
     it "withdraw is expected to raise error if no ATM is passed in" do

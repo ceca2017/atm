@@ -36,7 +36,7 @@ class Person
     if self.account == nil
       missing_account
     else
-      #binding.pry
+      binding.pry
       check_withdraw_attrs(attrs)
       reply = attrs[:atm].withdraw(attrs[:amount], attrs[:pin], attrs[:account])
       reply[:status] == false ? reply : @cash += reply[:amount]
