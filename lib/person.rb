@@ -39,7 +39,7 @@ class Person
       #binding.pry
       check_withdraw_attrs(attrs)
       reply = attrs[:atm].withdraw(attrs[:amount], attrs[:pin], attrs[:account])
-      reply[:status] == 'false' ? reply : @cash += attrs[:amount]
+      reply[:status] == false ? reply : @cash += reply[:amount]
     end
   end
 
