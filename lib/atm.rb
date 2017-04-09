@@ -67,5 +67,4 @@ class Atm
     bills
   end
 
-
 end

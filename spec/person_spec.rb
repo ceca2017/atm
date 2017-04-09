@@ -85,9 +85,6 @@ describe Person do
       expect(subject.cash).to be 100
     end
 
-
   end
-
-
 
 end

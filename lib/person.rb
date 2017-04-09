@@ -17,11 +17,6 @@ class Person
     @account = Account.new({ owner: self })
   end
 
-  #def deposit(amount)
-  #  #binding.pry
-  #  self.account == nil ? missing_account(amount) : self.account.deposit(amount)
-  #end
-
   def deposit(amount)
     if self.account == nil
       missing_account
@@ -36,7 +31,6 @@ class Person
     if self.account == nil
       missing_account
     else
-      binding.pry
       check_withdraw_attrs(attrs)
       reply = attrs[:atm].withdraw(attrs[:amount], attrs[:pin], attrs[:account])
       reply[:status] == false ? reply : @cash += reply[:amount]

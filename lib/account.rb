@@ -19,9 +19,10 @@ class Account
     # You want to deactivate the specific instance of class Account that you apply the
     # deactivate method on (my_account.deactivate)
     # To me it seems that you would create a class method in case you create module,
-    # i.e. you do not operate on a specific instance. Math.pi could be an example
+    # i.e. you do not operate on a specific instance. Math.sin(45) could be an example
     # of such as method
-    # Link: http://stackoverflow.com/questions/39903444/difference-between-class-method-instance-method-instance-variable-class-va
+    # Link: http://stackoverflow.com/questions/39903444/difference-between-class-method-instance-method-instance-variable-class-va and
+    # http://www.railstips.org/blog/archives/2009/05/11/class-and-instance-methods-in-ruby/
   end
 
   def deposit(amount)
@@ -45,8 +46,5 @@ class Account
   def missing_owner
     raise "An Account owner is required"
   end
-
-
-
 
 end
